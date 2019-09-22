@@ -31,7 +31,7 @@ public class FirstNameBloomFilterMaker {
 	private TreeMap<String, Integer> firstNameCounter = new TreeMap<String, Integer>();
 	private static BloomFilter<String> firstNameBloomFilter = null;
 	
-	final private static double FALSE_POSITIVE_PROBABILITY = 0.005;
+	final private static double FALSE_POSITIVE_PROBABILITY = 0.004;
 	final public static int EXPECTED_SIZE = 100000;	
 	final public static String BLOOM_FILTER_FILENAME_CS = "firstName_bloomfilter.dat";
 	final public static String BLOOM_FILTER_FILENAME_CI = "firstName_bloomfilter_not_CS.dat";

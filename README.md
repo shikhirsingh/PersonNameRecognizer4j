@@ -18,7 +18,7 @@ Maven - be sure to check for latest version in Maven:
 <dependency>
   <groupId>com.shikhir</groupId>
   <artifactId>person-name-recognizer</artifactId>
-  <version>1.1.6</version>
+  <version>1.1.8</version>
 </dependency>
 ```
 
@@ -48,7 +48,7 @@ FirstName.close() // frees up memory by closing the firstname dataset - calling 
 * 1.1.2 - removed human names that are common words (eg "Will", "See", "Tiny") 
 * 1.1.3 - removed human names that are more common words - ("Jan", "Summer", "Hope", "Code", etc)
 * 1.1.6 - Updated for more recent version of dataset avail, added close function  
-
+* 1.1.8 - minor fixes
 
 **Roadmap Features**
 * Last Name - dataset surname.csv is not yet used 

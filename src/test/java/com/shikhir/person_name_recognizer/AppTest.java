@@ -45,5 +45,7 @@ public class AppTest
     	
     	assertEquals(FirstName.isFirstName("may"), false);
     	assertEquals(FirstName.isFirstName("SUMMER"), false);
+    	assertEquals(FirstName.isFirstName("bill"), false);
+
     }
 }
