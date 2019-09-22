@@ -24,11 +24,12 @@ import com.google.common.base.Charsets;
 import com.google.common.hash.BloomFilter;
 import com.google.common.hash.Funnels;
 import com.shikhir.StrWrangler4j.fileops.ClassLoaderUtilz;
+import com.shikhir.person_name_recognizer.bloomfilter.FirstNameBloomFilterMaker;
 
 public class FirstName {
 	private static BloomFilter<String> firstNameCSBloomFilter = null;
 	private static BloomFilter<String> firstNameCIBloomFilter = null;
-
+	
 	public static boolean isFirstName(String firstName) {
 		return isFirstName(firstName, false);
 	}
@@ -95,5 +96,11 @@ public class FirstName {
 		{
 			e.printStackTrace();
 		}		
+	}
+	
+	public static void close() {
+		firstNameCSBloomFilter=null;
+		firstNameCIBloomFilter=null;
+		System.gc();
 	}
 }

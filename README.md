@@ -1,6 +1,6 @@
 # PersonNameRecognizer4j
 
-This is a small library that can be used to check if a string contains a human's name. It uses US Census data from 1880 - 2014 for it's dataset which is a fair representation of common names from around the world.
+This is a small library that can be used to check if a string contains a human's name. It uses [baby names for the USA Social Security card](https://catalog.data.gov/dataset/baby-names-from-social-security-card-applications-national-level-data) applications from from 1880 - 2018 for it's dataset. Given the ethnic diversity in the USA, there are a substantial amount of non-western names in this list (although they all use the English alphabet). 
 
 **Author**
 
@@ -18,7 +18,7 @@ Maven - be sure to check for latest version in Maven:
 <dependency>
   <groupId>com.shikhir</groupId>
   <artifactId>person-name-recognizer</artifactId>
-  <version>1.0.3</version>
+  <version>1.1.6</version>
 </dependency>
 ```
 
@@ -26,9 +26,12 @@ Maven - be sure to check for latest version in Maven:
 
 * Check if Mary is a first name
 ```
+System.out.println(FirstName.isFirstName("JoHn")); // true! - not tested for case sensitivity
+
 boolean caseSensitive = true; // Mary = yes; MARY = false; mary = false
 System.out.println(FirstName.isFirstName("Mary", true)); // true! Mary is a first name!
-System.out.println(FirstName.isFirstName("JoHn")); // true! - not tested for case sensitivity
+
+FirstName.close() // frees up memory by closing the firstname dataset - calling isFirstName again will open it again
 ```
 
 **RUNNING EXAMPLES**
@@ -42,7 +45,10 @@ System.out.println(FirstName.isFirstName("JoHn")); // true! - not tested for cas
 
 * 1.0.0 - Initial Release
 * 1.0.2 - Classpath bug fix
+* 1.1.2 - removed human names that are common words (eg "Will", "See", "Tiny") 
+* 1.1.3 - removed human names that are more common words - ("Jan", "Summer", "Hope", "Code", etc)
+* 1.1.6 - Updated for more recent version of dataset avail, added close function  
 
 
 **Roadmap Features**
-* Last Name 
+* Last Name - dataset surname.csv is not yet used 

@@ -42,5 +42,8 @@ public class AppTest
 
     	assertEquals(FirstName.isFirstName("qwerty", true), false); // lowercase should be false    	
     	assertEquals(FirstName.isFirstName("qwerty", false), false); // lowercase should be false
+    	
+    	assertEquals(FirstName.isFirstName("may"), false);
+    	assertEquals(FirstName.isFirstName("SUMMER"), false);
     }
 }

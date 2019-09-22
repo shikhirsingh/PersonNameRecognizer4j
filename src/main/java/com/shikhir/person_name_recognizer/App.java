@@ -1,7 +1,7 @@
 package com.shikhir.person_name_recognizer;
 
+import com.shikhir.person_name_recognizer.bloomfilter.FirstNameBloomFilterMaker;
 import com.shikhir.person_name_recognizer.firstname.FirstName;
-import com.shikhir.person_name_recognizer.firstname.FirstNameBloomFilterMaker;
 /**
  * Hello world!
  *
