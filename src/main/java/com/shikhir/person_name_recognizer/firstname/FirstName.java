@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Reader;
@@ -28,11 +29,14 @@ public class FirstName {
 	private static BloomFilter<String> firstNameCSBloomFilter = null;
 	private static BloomFilter<String> firstNameCIBloomFilter = null;
 
+	public static boolean isFirstName(String firstName) {
+		return isFirstName(firstName, false);
+	}
+	
 	public static boolean isFirstName(String firstName, boolean caseSensitive){
-		firstName = firstName.trim();
 		if(caseSensitive==true && firstNameCSBloomFilter == null) {
 			try {
-				deserializeCS();
+				deserialize(true);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -40,7 +44,7 @@ public class FirstName {
 		}
 		else if(caseSensitive==false && firstNameCIBloomFilter == null) {
 			try {
-				deserializeCI();
+				deserialize(false);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -63,43 +67,26 @@ public class FirstName {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static void deserializeCS() throws IOException {
+	public static void deserialize(boolean caseSensitive) throws IOException {
 
-		URL bloomFilterUrl=ClassLoaderUtilz.getResource(FirstNameBloomFilterMaker.BLOOM_FILTER_FILENAME_CS,
-														FirstName.class);
-
+		InputStream in = ClassLoaderUtilz.getResourceAsStream(caseSensitive?FirstNameBloomFilterMaker.BLOOM_FILTER_FILENAME_CS:
+																FirstNameBloomFilterMaker.BLOOM_FILTER_FILENAME_CI,
+																FirstName.class);
 		try
 		{
-			File bloomfilter = new File(bloomFilterUrl.toURI());		
-
-			if(firstNameCSBloomFilter==null) {
-				FileInputStream fis = new FileInputStream(bloomfilter);
-				ObjectInputStream in = new ObjectInputStream(fis);
-				firstNameCSBloomFilter = (BloomFilter<String>) in.readObject();
-				fis.close();
+			if(caseSensitive) {
+				if(firstNameCSBloomFilter==null) {
+					ObjectInputStream ois = new ObjectInputStream(in);
+					firstNameCSBloomFilter = (BloomFilter<String>) ois.readObject();
+					in.close();
+				}
 			}
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}		
-	}
-	
-	@SuppressWarnings("unchecked")
-	public static void deserializeCI() throws IOException {
-
-		URL bloomFilterUrl=ClassLoaderUtilz.getResource(FirstNameBloomFilterMaker.BLOOM_FILTER_FILENAME_CI,
-														FirstName.class);
-
-		try
-		{
-			File bloomfilter = new File(bloomFilterUrl.toURI());
-
-			if(firstNameCIBloomFilter==null) {
-				FileInputStream fis = new FileInputStream(bloomfilter);
-				ObjectInputStream in = new ObjectInputStream(fis);
-				firstNameCIBloomFilter = (BloomFilter<String>) in.readObject();
-				fis.close();
+			else {
+				if(firstNameCIBloomFilter==null) {
+					ObjectInputStream ois = new ObjectInputStream(in);
+					firstNameCIBloomFilter = (BloomFilter<String>) ois.readObject();
+					in.close();
+				}
 			}
 		}
 		catch(Exception e)

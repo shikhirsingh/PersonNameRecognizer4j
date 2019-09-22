@@ -18,7 +18,7 @@ Maven - be sure to check for latest version in Maven:
 <dependency>
   <groupId>com.shikhir</groupId>
   <artifactId>person-name-recognizer</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 </dependency>
 ```
 
@@ -28,6 +28,7 @@ Maven - be sure to check for latest version in Maven:
 ```
 boolean caseSensitive = true; // Mary = yes; MARY = false; mary = false
 System.out.println(FirstName.isFirstName("Mary", true)); // true! Mary is a first name!
+System.out.println(FirstName.isFirstName("JoHn")); // true! - not tested for case sensitivity
 ```
 
 **RUNNING EXAMPLES**
@@ -40,6 +41,8 @@ System.out.println(FirstName.isFirstName("Mary", true)); // true! Mary is a firs
 **Version History**
 
 * 1.0.0 - Initial Release
+* 1.0.2 - Classpath bug fix
+
 
 **Roadmap Features**
 * Last Name 

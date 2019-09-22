@@ -33,6 +33,7 @@ public class AppTest
     	assertEquals(FirstName.isFirstName("john",true), false); // lowercase should be false
 
     	assertEquals(FirstName.isFirstName("JOHN",false), true); // lowercase should be false
+    	assertEquals(FirstName.isFirstName("JoHn"), true); // lowercase should be false
 
     	
     	assertEquals(FirstName.isFirstName("Mary", true), true); // lowercase should be false    	
