@@ -18,7 +18,7 @@ Maven - be sure to check for latest version in Maven:
 <dependency>
   <groupId>com.shikhir</groupId>
   <artifactId>person-name-recognizer</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3</version>
 </dependency>
 ```
 

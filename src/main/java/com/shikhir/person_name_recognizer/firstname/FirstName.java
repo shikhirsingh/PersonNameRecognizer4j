@@ -68,14 +68,13 @@ public class FirstName {
 
 	@SuppressWarnings("unchecked")
 	public static void deserialize(boolean caseSensitive) throws IOException {
-
-		InputStream in = ClassLoaderUtilz.getResourceAsStream(caseSensitive?FirstNameBloomFilterMaker.BLOOM_FILTER_FILENAME_CS:
-																FirstNameBloomFilterMaker.BLOOM_FILTER_FILENAME_CI,
-																FirstName.class);
 		try
 		{
 			if(caseSensitive) {
 				if(firstNameCSBloomFilter==null) {
+					InputStream in = ClassLoaderUtilz.getResourceAsStream(FirstNameBloomFilterMaker.BLOOM_FILTER_FILENAME_CS,
+						FirstName.class);
+
 					ObjectInputStream ois = new ObjectInputStream(in);
 					firstNameCSBloomFilter = (BloomFilter<String>) ois.readObject();
 					in.close();
@@ -83,6 +82,9 @@ public class FirstName {
 			}
 			else {
 				if(firstNameCIBloomFilter==null) {
+					InputStream in = ClassLoaderUtilz.getResourceAsStream(FirstNameBloomFilterMaker.BLOOM_FILTER_FILENAME_CI,
+																			FirstName.class);
+
 					ObjectInputStream ois = new ObjectInputStream(in);
 					firstNameCIBloomFilter = (BloomFilter<String>) ois.readObject();
 					in.close();
