@@ -13,6 +13,7 @@ import java.io.Reader;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -66,7 +67,19 @@ public class FirstName {
 			}
 		}
 	}
-
+	
+	public static List<String> findNamesInString(String document, boolean caseSensitive){
+		List<String> names = new ArrayList<String>();
+		
+		String[] docWords = document.replaceAll("[^a-zA-Z]", " ").split("\\s+");
+		for(int i=0; i<docWords.length; i++) {
+			if(isFirstName(docWords[i], caseSensitive)){
+				names.add(docWords[i]);
+			}
+		}
+		return names;
+	}
+	
 	@SuppressWarnings("unchecked")
 	public static void deserialize(boolean caseSensitive) throws IOException {
 		try

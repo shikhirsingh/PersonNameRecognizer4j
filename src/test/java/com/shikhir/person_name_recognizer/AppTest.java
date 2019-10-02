@@ -47,5 +47,7 @@ public class AppTest
     	assertEquals(FirstName.isFirstName("SUMMER"), false);
     	assertEquals(FirstName.isFirstName("bill"), false);
 
+    	String test = "Hey John, when are you coming into town with Beth?"; // tricky because both John and Beth tokens contain symbols "," and "?"
+    	assertEquals(FirstName.findNamesInString(test, false).size(),2);
     }
 }
