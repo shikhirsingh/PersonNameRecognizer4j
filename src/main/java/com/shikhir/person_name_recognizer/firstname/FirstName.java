@@ -71,7 +71,7 @@ public class FirstName {
 	public static List<String> findNamesInString(String document, boolean caseSensitive){
 		List<String> names = new ArrayList<String>();
 		
-		String[] docWords = document.replaceAll("[^a-zA-Z]", " ").split("\\s+");
+		String[] docWords = document.replaceAll("[^'a-zA-Z]", " ").split("\\s+");
 		for(int i=0; i<docWords.length; i++) {
 			if(isFirstName(docWords[i], caseSensitive)){
 				names.add(docWords[i]);

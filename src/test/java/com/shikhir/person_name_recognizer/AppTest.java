@@ -49,5 +49,9 @@ public class AppTest
 
     	String test = "Hey John, when are you coming into town with Beth?"; // tricky because both John and Beth tokens contain symbols "," and "?"
     	assertEquals(FirstName.findNamesInString(test, false).size(),2);
+
+    	String test2 = "I don't and won't worry about it"; // need to ensure that the firstname Don is not found in don't
+    	assertEquals(FirstName.findNamesInString(test2, false).size(),0);
+    	
     }
 }
