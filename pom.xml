@@ -63,7 +63,7 @@
 		<dependency>
 			<groupId>com.shikhir</groupId>
 			<artifactId>StrWrangler4j</artifactId>
-			<version>1.2.2</version>
+			<version>1.2.8</version>
 		</dependency>
 	</dependencies>
 
