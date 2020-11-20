@@ -32,3 +32,5 @@ hi
 bill
 he
 she
+
+notebook>=6.1.5 # not directly required, pinned by Snyk to avoid a vulnerability
