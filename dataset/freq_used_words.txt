@@ -32,3 +32,5 @@ hi
 bill
 he
 she
+mistune>=2.0.1 # not directly required, pinned by Snyk to avoid a vulnerability
+numpy>=1.22.0rc1 # not directly required, pinned by Snyk to avoid a vulnerability
